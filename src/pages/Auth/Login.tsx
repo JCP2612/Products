@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     IonHeader,
     IonPage,
@@ -12,8 +12,32 @@ import {
     IonContent
 } from "@ionic/react";
 import './Login.css'
+import { FormLogin, useLogin } from "../../hooks/useLogin";
+import { useValidateForm } from "../../hooks/validateForm";
 
 const Login: React.FC = () => {
+
+    const { handleValidate, valid, errors } = useValidateForm();
+    const { handleLogin } = useLogin();
+    const [formData, setFormData] = useState<FormLogin>({
+        email: { value: "", regex: "email" },
+        password: { value: "", regex: "password" },
+    });
+
+    const handleChange = (e: CustomEvent) => {
+        const { id, value } = e.target as HTMLInputElement;
+        setFormData({
+            ...formData,
+            [id]: { value, regex: formData[id].regex },
+        });
+    };
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        const isValid = handleValidate(formData);
+        if (isValid) handleLogin(formData);
+        else console.log(errors);
+    };
 
     return (
         <IonPage>
@@ -30,7 +54,7 @@ const Login: React.FC = () => {
                 <main className="auth">
                     <IonCard className="auth__card">
                         <IonCardContent>
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <IonInput
                                     fill="outline"
                                     label="Email"
@@ -39,6 +63,7 @@ const Login: React.FC = () => {
                                     id="email"
                                     autocomplete={"off"}
                                     labelPlacement="stacked"
+                                    onIonChange={handleChange}
                                 >
                                 </IonInput>
                                 <br />
@@ -49,6 +74,7 @@ const Login: React.FC = () => {
                                     type="password"
                                     id="password"
                                     labelPlacement="stacked"
+                                    onIonChange={handleChange}
                                 >
                                 </IonInput>
                                 <br />

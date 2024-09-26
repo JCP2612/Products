@@ -1,13 +1,14 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../../components/Home/Home';
 import './Tab2.css';
+import { Wishlist } from '../../components/Wishlist/Wishlist';
 
 const Tab2: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 2</IonTitle>
+          <IonTitle>Wishlist</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -16,7 +17,7 @@ const Tab2: React.FC = () => {
             <IonTitle size="large">Wishlist</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 2 page" />
+        <Wishlist />
       </IonContent>
     </IonPage>
   );

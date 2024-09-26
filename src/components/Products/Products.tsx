@@ -5,6 +5,7 @@ import axios from "axios";
 import { Product } from "../../stores/useProduct";
 import useFilter from '../../hooks/useFilter';
 import "./Products.css"
+import MyImage from '../../images/product.jpg';
 
 const Products: React.FC<Product> = ({
     images
@@ -41,7 +42,7 @@ const Products: React.FC<Product> = ({
         }, 100);
     };
     const imageStyle = {
-        backgroundImage: `url(${images})`,
+        backgroundImage: `url(${MyImage})`,
     };
     return (
         <>
