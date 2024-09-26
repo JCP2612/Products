@@ -16,7 +16,7 @@ const RedirectAuth: React.FC<RedirectAuthProps> = ({
         <>
             <a onClick={() => history.push(route)}>
                 <IonText className="info_text">
-                    {type == "login" ? "Registrate" : "Iniciar sesion"}
+                    {type == "login" ? "Registrate" : "Iniciar sesion"}{" "}
                 </IonText>
             </a>
         </>

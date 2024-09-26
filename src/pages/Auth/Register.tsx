@@ -58,13 +58,21 @@ const Register: React.FC = () => {
                             <form onSubmit={handleSubmit}>
                                 <IonInput
                                     fill="outline"
-                                    label="Email"
-                                    placeholder="Por favor ingresa tu correo"
-                                    type="email"
-                                    id="email"
-                                    autocomplete={"off"}
-                                    labelPlacement="stacked"
+                                    label="Usuario"
+                                    placeholder="Crea tu usuario"
+                                    id={`username`}
                                     onIonChange={handleChange}
+                                    labelPlacement="stacked"
+                                >
+                                </IonInput>
+                                <br />
+                                <IonInput
+                                    fill="outline"
+                                    label="Nombre completo"
+                                    placeholder="Ingresa tu nombre"
+                                    id={`fullname`}
+                                    onIonChange={handleChange}
+                                    labelPlacement="stacked"
                                 >
                                 </IonInput>
                                 <br />
@@ -73,9 +81,9 @@ const Register: React.FC = () => {
                                     label="Password"
                                     placeholder="Por favor ingresa tu contraseña"
                                     type="password"
-                                    id="password"
-                                    labelPlacement="stacked"
+                                    id={`password`}
                                     onIonChange={handleChange}
+                                    labelPlacement="stacked"
                                 >
                                 </IonInput>
                                 <br />
@@ -83,7 +91,7 @@ const Register: React.FC = () => {
                                     className="auth__card--button"
                                     type="submit"
                                 >
-                                    Ingresar
+                                    Registrarse
                                 </IonButton>
                             </form>
                         </IonCardContent>
