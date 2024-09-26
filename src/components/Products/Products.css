@@ -1,0 +1,16 @@
+ion-card{
+    position: relative;
+    cursor: pointer;
+    transition: all ease-in-out 100ms;
+    height: 20rem;
+}
+ion-card-title{
+    font-size: .85rem;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}

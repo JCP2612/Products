@@ -1,0 +1,7 @@
+ion-card.auth__card{
+    position: relative;
+    cursor: pointer;
+    transition: all ease-in-out 100ms;
+    margin-top: 5rem;
+    height: 15rem;
+}

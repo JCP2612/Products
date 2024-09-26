@@ -1,6 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../../components/Home/Home';
 import './Tab3.css';
+import Login from '../Auth/Login';
 
 const Tab3: React.FC = () => {
   return (
@@ -16,7 +17,7 @@ const Tab3: React.FC = () => {
             <IonTitle size="large">Login</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 3 page" />
+        <Login />
       </IonContent>
     </IonPage>
   );
