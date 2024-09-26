@@ -1,41 +1,40 @@
-import { useHistory } from "react-router";
 import useUserState, { User } from "../stores/useUserStore";
+import { useHistory } from "react-router";
 import { MD5 } from "crypto-js";
 import { FormField } from "../utils/utils";
-import { useEffect } from "react";
 
-export interface FormLogin {
+export interface FormRegister {
   username: FormField;
+  fullname: FormField;
   password: FormField;
   [key: string]: FormField;
 }
-export const useLogin = () => {
+
+export const useRegister = () => {
   const { setUser } = useUserState();
   const history = useHistory();
 
-  const handleLogin = async (formData: FormLogin) => {
+  const handleRegister = async (formData: FormRegister) => {
     try {
       const hashPassword: string = MD5(formData.password.value).toString();
-      const response = await fetch("http://localhost:5077/api/login", {
+      const response = await fetch("http://localhost:5077/api/register/", {
         method: "POST",
         headers: {
-          "Content-type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: formData.username.value,
+          username: formData.fullname.value,
           password: hashPassword,
+          fullname: formData.fullname.value,
         }),
       });
-      if (!response.ok) throw new Error("Error en el inicio de sesión");
+      if (!response.ok) throw new Error("Error al crear");
       const data: User = await response.json();
       setUser(data);
-      history.push("/wishlist");
-    } catch (error: any) {
-      console.error("Error:", error);
-    }
+      history.push("/products");
+    } catch (error) {}
   };
-
   return {
-    handleLogin,
+    handleRegister,
   };
 };

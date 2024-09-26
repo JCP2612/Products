@@ -44,44 +44,60 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { Wishlist } from './components/Wishlist/Wishlist';
+import useUserState from './stores/useUserStore';
+import Register from "./pages/Auth/Register";
+import Products from './components/Products/Products';
+import Login from './pages/Auth/Login';
+import { Profile } from './pages/Auth/Profile';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/tab1" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon aria-hidden="true" icon={cart} />
-            <IonLabel>Products</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon aria-hidden="true" icon={bookmarks} />
-            <IonLabel>Wishlist</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon aria-hidden="true" icon={person} />
-            <IonLabel>Login</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  const { user } = useUserState();
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/products">
+              <Tab1 />
+            </Route>
+            <Route exact path="/wishlist">
+              <Wishlist />
+            </Route>
+            <Route path="/login">
+              {user != null ? <Wishlist /> : <Redirect to="/login" />}
+              <Login />
+            </Route>
+            <Route exact path="/profile">
+              {user != null ? <Profile /> : <Redirect to="/login" />}
+            </Route>
+            <Route exact path="/register">
+              <Register />
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/products" />
+            </Route>
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="products" href="/products">
+              <IonIcon aria-hidden="true" icon={cart} />
+              <IonLabel>Products</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="wishlist" href="/wishlist">
+              <IonIcon aria-hidden="true" icon={bookmarks} />
+              <IonLabel>Wishlist</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="profile" href={user ? "/profile" : "/login"}>
+              <IonIcon aria-hidden="true" icon={user ? person : logIn} />
+              <IonLabel>{user ? "Perfil" : "Iniciar sesión"}</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;

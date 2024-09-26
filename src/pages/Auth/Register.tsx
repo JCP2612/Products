@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
     IonHeader,
     IonPage,
@@ -7,22 +7,21 @@ import {
     IonCard,
     IonCardContent,
     IonInput,
-    IonText,
     IonButton,
-    IonContent
-} from "@ionic/react";
-import './Login.css'
-import { FormLogin, useLogin } from "../../hooks/useLogin";
-import { useValidateForm } from "../../hooks/validateForm";
-import RedirectAuth from "./Redirect";
+    IonContent,
+    IonText
+} from '@ionic/react';
+import './Login.css';
+import { FormRegister, useRegister } from '../../hooks/useRegister';
+import { useValidateForm } from '../../hooks/validateForm';
 
-
-const Login: React.FC = () => {
+const Register: React.FC = () => {
 
     const { handleValidate, valid, errors } = useValidateForm();
-    const { handleLogin } = useLogin();
-    const [formData, setFormData] = useState<FormLogin>({
+    const { handleRegister } = useRegister();
+    const [formData, setFormData] = useState<FormRegister>({
         username: { value: "", regex: "username" },
+        fullname: { value: "", regex: "fullname" },
         password: { value: "", regex: "password" },
     });
 
@@ -32,14 +31,14 @@ const Login: React.FC = () => {
             ...formData,
             [id]: { value, regex: formData[id].regex },
         });
-    };
+    }
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault();
         const isValid = handleValidate(formData);
-        if (isValid) handleLogin(formData);
+        if (isValid) handleRegister(formData);
         else console.log(errors);
-    };
+    }
 
     return (
         <IonPage>
@@ -47,7 +46,7 @@ const Login: React.FC = () => {
                 <IonToolbar>
                     <IonTitle>
                         <IonText>
-                            Login
+                            Register
                         </IonText>
                     </IonTitle>
                 </IonToolbar>
@@ -59,10 +58,10 @@ const Login: React.FC = () => {
                             <form onSubmit={handleSubmit}>
                                 <IonInput
                                     fill="outline"
-                                    label="Username"
-                                    placeholder="Por favor ingresa tu usuario"
-                                    type="text"
-                                    id="username"
+                                    label="Email"
+                                    placeholder="Por favor ingresa tu correo"
+                                    type="email"
+                                    id="email"
                                     autocomplete={"off"}
                                     labelPlacement="stacked"
                                     onIonChange={handleChange}
@@ -81,29 +80,17 @@ const Login: React.FC = () => {
                                 </IonInput>
                                 <br />
                                 <IonButton
-                                    className="auth__card--button_login"
+                                    className="auth__card--button"
                                     type="submit"
-                                    expand="block"
-                                    shape="round"
                                 >
                                     Ingresar
-                                </IonButton>
-                                <IonButton
-                                    className="auth__card--button_register"
-                                    expand="block"
-                                    shape="round"
-                                >Registro
-                                    <RedirectAuth route="/register" type="login" />
-
                                 </IonButton>
                             </form>
                         </IonCardContent>
                     </IonCard>
-
                 </main>
             </IonContent>
         </IonPage>
     )
 }
-
-export default Login;
+export default Register;

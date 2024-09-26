@@ -2,10 +2,9 @@ import { create, StateCreator } from "zustand";
 import { persist, PersistOptions } from "zustand/middleware";
 
 export interface User {
-  email: string;
+  username: string;
   id: number;
-  name: string;
-  role: string;
+  fullname: string;
   [key: string]: string | number;
 }
 

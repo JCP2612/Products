@@ -3,5 +3,8 @@ ion-card.auth__card{
     cursor: pointer;
     transition: all ease-in-out 100ms;
     margin-top: 5rem;
-    height: 15rem;
+    height: 18rem;
+}
+.ion-card.auth__card--button_register{
+    text-align: center;
 }
