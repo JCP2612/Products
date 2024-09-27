@@ -15,13 +15,15 @@ import React, { useEffect } from "react";
 import useUserState from "../../stores/useUserStore";
 import "./Profile.css";
 import { useHistory } from "react-router";
+import useFavoriteStore from "../../stores/useFavoriteStore";
 
 export const Profile: React.FC = () => {
     const { user, setUser } = useUserState();
+    const { clearFavorite } = useFavoriteStore();
     const history = useHistory();
     const dicAttributes: { [key: string]: string } = {
-        username: "Nombre de usuario",
-        fullname: "Nombre completo"
+        username: "User Name",
+        fullname: "Full Name",
     };
 
     useEffect(() => {
@@ -30,6 +32,7 @@ export const Profile: React.FC = () => {
 
     const handleLogout = () => {
         setUser(null);
+        clearFavorite();
         setTimeout(() => history.push("/products"), 10);
     };
 
@@ -37,7 +40,7 @@ export const Profile: React.FC = () => {
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Perfil</IonTitle>
+                    <IonTitle>Profile</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>
@@ -45,21 +48,17 @@ export const Profile: React.FC = () => {
                     <IonCard>
                         <IonCardHeader>
                             <IonText>
-                                Estado actual: <IonText color={"success"}>Activo</IonText>
+                                Current status: <IonText color={"success"}>Active</IonText>
                             </IonText>
                             <br />
-                            <IonText className="profile__title">
-                                Información personal
-                            </IonText>
+                            <IonText className="profile__title">Personal Info</IonText>
                             <IonList className="profile__list">
                                 {Object.keys(user || {}).map((key: string, index: number) =>
                                     index != 0 ? (
                                         <IonItem key={`user-attr${index}`}>
                                             <section className="profile__list__item">
                                                 <IonText>{dicAttributes[key]}:</IonText>
-                                                <IonText>
-                                                    {user ? user[key] : "Sin datos"}
-                                                </IonText>
+                                                <IonText>{user ? user[key] : "Sin datos"}</IonText>
                                             </section>
                                         </IonItem>
                                     ) : (
@@ -76,7 +75,7 @@ export const Profile: React.FC = () => {
                         color={"danger"}
                         onClick={handleLogout}
                     >
-                        <IonText>Cerrar sesión</IonText>
+                        <IonText>Log Out</IonText>
                     </IonButton>
                 </main>
             </IonContent>

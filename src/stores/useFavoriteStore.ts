@@ -5,10 +5,12 @@ import { Product } from "./useProduct";
 export interface Favorite {
   id: number;
   product: Product;
+  addDate: Date;
 }
 
 export interface FavoriteState {
   favorites: Favorite[];
+  count: () => number;
   addFavorite: (newFavorite: Favorite) => void;
   removeFavorite: (favoriteId: number) => void;
   clearFavorite: () => void;
@@ -23,11 +25,14 @@ const useFavoriteStore = create<FavoriteState>(
   (persist as favoritePersist)(
     (set, get) => ({
       favorites: [],
-
+      count: () => {
+        const { favorites } = get();
+        return favorites.length;
+      },
       addFavorite: (newFavorite: Favorite) => {
         const { favorites } = get();
         const isAlreadyFavorite = favorites.some(
-          (fav) => fav.id === newFavorite.id
+          (fav) => fav.product.id === newFavorite.product.id
         );
 
         if (!isAlreadyFavorite) {

@@ -67,8 +67,7 @@ const App: React.FC = () => {
               <Wishlist />
             </Route>
             <Route path="/login">
-              {user != null ? <Wishlist /> : <Redirect to="/login" />}
-              <Login />
+              {user != null ? <Redirect to="/wishlist" /> : <Login />}
             </Route>
             <Route exact path="/profile">
               {user != null ? <Profile /> : <Redirect to="/login" />}
@@ -91,7 +90,7 @@ const App: React.FC = () => {
             </IonTabButton>
             <IonTabButton tab="profile" href={user ? "/profile" : "/login"}>
               <IonIcon aria-hidden="true" icon={user ? person : logIn} />
-              <IonLabel>{user ? "Perfil" : "Iniciar sesión"}</IonLabel>
+              <IonLabel>{user ? "Profile" : "Log In"}</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>

@@ -29,7 +29,9 @@ export const useLogin = () => {
       if (!response.ok) throw new Error("Error en el inicio de sesión");
       const data: User = await response.json();
       setUser(data);
-      history.push("/wishlist");
+      setTimeout(() => {
+        history.push("/products");
+      }, 0);
     } catch (error: any) {
       console.error("Error:", error);
     }

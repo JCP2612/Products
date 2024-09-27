@@ -68,8 +68,8 @@ const Register: React.FC = () => {
                                 <br />
                                 <IonInput
                                     fill="outline"
-                                    label="Nombre completo"
-                                    placeholder="Ingresa tu nombre"
+                                    label="Full Name"
+                                    placeholder="Enter your full name"
                                     id={`fullname`}
                                     onIonChange={handleChange}
                                     labelPlacement="stacked"
@@ -79,7 +79,7 @@ const Register: React.FC = () => {
                                 <IonInput
                                     fill="outline"
                                     label="Password"
-                                    placeholder="Por favor ingresa tu contraseña"
+                                    placeholder="Enter your password"
                                     type="password"
                                     id={`password`}
                                     onIonChange={handleChange}
@@ -91,7 +91,7 @@ const Register: React.FC = () => {
                                     className="auth__card--button"
                                     type="submit"
                                 >
-                                    Registrarse
+                                    Register
                                 </IonButton>
                             </form>
                         </IonCardContent>

@@ -11,4 +11,5 @@ export interface Product {
   category: Category[];
   images: string[];
   description: string;
+  favorite?: boolean;
 }

@@ -60,7 +60,7 @@ const Login: React.FC = () => {
                                 <IonInput
                                     fill="outline"
                                     label="Username"
-                                    placeholder="Por favor ingresa tu usuario"
+                                    placeholder="Enter your username"
                                     type="text"
                                     id="username"
                                     autocomplete={"off"}
@@ -72,7 +72,7 @@ const Login: React.FC = () => {
                                 <IonInput
                                     fill="outline"
                                     label="Password"
-                                    placeholder="Por favor ingresa tu contraseña"
+                                    placeholder="Enter your password"
                                     type="password"
                                     id="password"
                                     labelPlacement="stacked"
@@ -86,13 +86,13 @@ const Login: React.FC = () => {
                                     expand="block"
                                     shape="round"
                                 >
-                                    Ingresar
+                                    Log In
                                 </IonButton>
                                 <IonButton
                                     className="auth__card--button_register"
                                     expand="block"
                                     shape="round"
-                                >Registro
+                                >Register
                                     <RedirectAuth route="/register" type="login" />
 
                                 </IonButton>

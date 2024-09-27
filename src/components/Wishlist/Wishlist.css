@@ -1,0 +1,16 @@
+ion-list.list-content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 2rem;
+}
+
+ion-button.product-button{
+    margin-left: 5rem;
+    margin-bottom: 1rem;
+}
+
+ion-text.product-date{
+    font-size: .8rem;
+    color:darkgrey;
+}
