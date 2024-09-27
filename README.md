@@ -1,4 +1,4 @@
-# StoreApp
+# Products
 
 Este es un proyecto desarrollado con React e Ionic para la creación de una aplicación de tienda. A continuación, se detallan los pasos para la configuración, instalación y ejecución del proyecto.
 
