@@ -63,7 +63,7 @@ Esto construirá la aplicación y la ejecutará en el dispositivo o emulador sel
 ### Estructura del Proyecto
 Esta es una breve descripción de la estructura del proyecto:
 ```
-StoreApp/
+Products/
 ├── public/           # Archivos públicos
 ├── src/              # Código fuente de la aplicación
 │   ├── components/   # Componentes reutilizables
